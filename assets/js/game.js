@@ -3,18 +3,19 @@ var playerHealth = 100;
 var playerAttack = 10;
 var playerMoney = 10;
 
-var enemyNames = ['Roborto', 'Amy Android', 'Robo Trumble'];
-var enemyHealth = 50;
-var enemyAttack = 12;
-
 var randomNumber = function(min, max) {
   var value = Math.floor(Math.random() * (max - min + 1) + min);
 
   return value;
 };
 
+var enemyNames = ['Roborto', 'Amy Android', 'Robo Trumble'];
+var enemyHealth = randomNumber(40, 60);
+var enemyAttack = randomNumber(10, 14);
+
 // fight function (now with parameter for enemy's name)
 var fight = function(enemyName) {
+
   while (playerHealth > 0 && enemyHealth > 0) {
     // ask player if they'd like to fight or run
     var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
@@ -91,6 +92,7 @@ var startGame = function() {
 
       // reset enemyHealth before starting new fight
       enemyHealth = randomNumber(40, 60);
+      enemyAttack = randomNumber(10, 14);
 
       // pass the pickedEnemyName variable's value into the fight function, where it will assume the value of the enemyName parameter
       fight(pickedEnemyName);
